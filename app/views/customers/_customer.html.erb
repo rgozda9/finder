@@ -1,0 +1,17 @@
+<% @customers.each do |customer| %>
+  <div class="content">
+    <p><%= link_to "edit", edit_customer_path(customer) %> <%= link_to "x", customer, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <h2><%= customer.full_name %></h2>
+    <p><%= image_tag customer.image, width:'100%' %></p>
+    <% if !customer.province_id.blank? %>
+      <p><b>Province: </b><%= customer.province.name %></p>
+    <% else %>
+      <p><b>Province: </b>None</p>
+    <% end %>
+    <p><b>Phone: </b><%= customer.phone %></p>
+    <% if !customer.email.blank? %>
+      <p><b>Email: </b><%= customer.email %></p>
+    <% end %>
+    <p><b>Notes: </b><%= customer.notes %></p>
+  </div>
+<% end %>
